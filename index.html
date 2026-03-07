@@ -4,121 +4,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teleprompter & Slides</title>
+    
+    <style>
+        html, body { background-color: #1a1a1a !important; margin: 0; padding: 0; }
+    </style>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #1a1a1a; margin: 0; }
+        body { font-family: 'Inter', sans-serif; color: white; }
         
+        /* Botões com cores sólidas e letras brancas reais */
         .btn-modo1 { 
             color: #ffffff !important; 
             text-decoration: none !important; 
             display: inline-block;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, filter 0.3s ease;
         }
 
+        /* Efeito de subir sem esticar os pixels */
         .btn-efeito:hover {
             transform: translateY(-4px);
-            filter: brightness(1.1);
+            filter: brightness(1.2);
         }
 
-        .hover-zoom:hover {
-            transform: scale(1.02);
-        }
+        /* Zoom estável apenas para cards e imagens */
+        .hover-zoom { transition: transform 0.3s ease; }
+        .hover-zoom:hover { transform: scale(1.02); }
 
         .glass-card {
             background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
         
         .zoom-cursor { cursor: zoom-in; }
         
-        /* Título com Degradê Suave #30A465 (Verde-azulado) e #11578F (Azul suave) */
+        /* Degradê Ajustado: Mais brilho para legibilidade no fundo escuro */
         .titulo-bicolor {
-            background: linear-gradient(to bottom, #30A465 20%, #11578F 80%);
+            background: linear-gradient(to bottom, #4ade80 10%, #3b82f6 90%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            display: inline-block;
         }
     </style>
 </head>
-<body class="text-white">
+<body>
 
     <div id="modalImagem" class="fixed inset-0 z-50 hidden bg-black/95 flex items-center justify-center p-4" onclick="fecharModal()">
         <span class="absolute top-5 right-8 text-white text-5xl cursor-pointer font-bold">&times;</span>
         <img id="imgExpandida" src="" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl border border-gray-700">
     </div>
 
-    <header class="max-w-6xl mx-auto px-6 py-12 text-center">
+    <header class="max-w-6xl mx-auto px-6 py-16 text-center">
         <img src="logo.png" alt="Logo Modo 1" class="mx-auto w-24 mb-6 drop-shadow-lg">
         
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-4 titulo-bicolor">
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 titulo-bicolor leading-tight">
             Teleprompter & Slides
         </h1>
         
-        <p class="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+        <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
             A solução definitiva para oradores, pastores e criadores de conteúdo. Segurança em nuvem, controle de velocidade e visualização impecável.
         </p>
         
-        <div class="flex flex-col md:flex-row justify-center gap-4">
+        <div class="flex flex-col md:flex-row justify-center gap-6">
             <a href="https://github.com/Modo1-Br/1-Programa/releases/latest/download/Teleprompter.exe" 
-               class="btn-modo1 btn-efeito bg-blue-600 font-bold py-4 px-8 rounded-full shadow-lg shadow-blue-500/20">
-               📥 Baixar Grátis (v1.0)
+               class="btn-modo1 btn-efeito bg-blue-600 font-bold py-4 px-10 rounded-full shadow-lg shadow-blue-900/40">
+               📥 Baixar Grátis
             </a>
             <a href="https://wa.me/5562982187017" 
-               class="btn-modo1 btn-efeito bg-[#25D366] font-bold py-4 px-8 rounded-full shadow-lg shadow-green-500/20">
+               class="btn-modo1 btn-efeito bg-[#25D366] font-bold py-4 px-10 rounded-full shadow-lg shadow-green-900/40">
                💬 Suporte WhatsApp
             </a>
         </div>
     </header>
 
-    <section class="py-10 bg-[#121212]">
+    <section class="py-16 bg-[#121212]">
         <div class="max-w-5xl mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-10 titulo-bicolor text-center">Conheça a Interface</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                <div class="glass-card p-3 rounded-2xl shadow-xl hover-zoom zoom-cursor" onclick="abrirModal('print1.png')">
-                    <img src="print1.png" alt="Interface Clara" class="rounded-xl w-full h-auto border border-gray-800">
-                    <p class="mt-4 text-sm text-gray-400 font-bold uppercase tracking-widest text-center">Interface Clara e Intuitiva</p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 titulo-bicolor">Conheça a Interface</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="glass-card p-4 rounded-3xl shadow-2xl hover-zoom zoom-cursor" onclick="abrirModal('print1.png')">
+                    <img src="print1.png" alt="Interface" class="rounded-2xl w-full h-auto border border-gray-800">
+                    <p class="mt-5 text-gray-300 font-bold uppercase tracking-tighter">Visualização Clara</p>
                 </div>
-                <div class="glass-card p-3 rounded-2xl shadow-xl hover-zoom zoom-cursor" onclick="abrirModal('print2.png')">
-                    <img src="print2.png" alt="Modo Escuro" class="rounded-xl w-full h-auto border border-gray-800">
-                    <p class="mt-4 text-sm text-gray-400 font-bold uppercase tracking-widest text-center">Modo Escuro para Ambientes com Pouca Luz</p>
+                <div class="glass-card p-4 rounded-3xl shadow-2xl hover-zoom zoom-cursor" onclick="abrirModal('print2.png')">
+                    <img src="print2.png" alt="Interface" class="rounded-2xl w-full h-auto border border-gray-800">
+                    <p class="mt-5 text-gray-300 font-bold uppercase tracking-tighter">Alta Performance</p>
                 </div>
             </div>
-            <p class="mt-8 text-gray-500 text-sm italic font-bold">Clique em uma imagem para ampliar</p>
         </div>
     </section>
 
-    <section class="bg-[#1a1a1a] py-20">
+    <section class="py-24">
         <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
-            
-            <div class="glass-card p-8 rounded-2xl border border-gray-800 hover:border-blue-500 hover-zoom">
-                <div class="text-4xl mb-4 text-blue-500">🔒</div>
-                <h3 class="text-xl font-bold mb-2 text-white">Segurança Total</h3>
-                <p class="text-gray-400 text-sm font-bold">Licenciamento em nuvem via Supabase. Sua licença protegida por Hardware ID.</p>
+            <div class="glass-card p-10 rounded-3xl border border-gray-800 hover:border-blue-500 hover-zoom">
+                <div class="text-5xl mb-6 text-blue-500">🔒</div>
+                <h3 class="text-xl font-bold mb-4">Segurança Total</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Licenciamento em nuvem via Supabase. Sua licença protegida por Hardware ID (HWID).</p>
             </div>
-
-            <div class="glass-card p-8 rounded-2xl border border-gray-800 hover:border-green-500 hover-zoom">
-                <div class="text-4xl mb-4 text-green-500">🌙</div>
-                <h3 class="text-xl font-bold mb-2 text-white">Modo Escuro Nativo</h3>
-                <p class="text-gray-400 text-sm font-bold">Conforto visual para ambientes escuros, igrejas e estúdios de gravação.</p>
+            <div class="glass-card p-10 rounded-3xl border border-gray-800 hover:border-green-500 hover-zoom">
+                <div class="text-5xl mb-6 text-green-500">🌙</div>
+                <h3 class="text-xl font-bold mb-4">Modo Escuro Nativo</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Conforto visual absoluto para ambientes de igreja e estúdios profissionais.</p>
             </div>
-
-            <div class="glass-card p-8 rounded-2xl border border-gray-800 hover:border-orange-500 hover-zoom">
-                <div class="text-4xl mb-4 text-orange-500">🚀</div>
-                <h3 class="text-xl font-bold mb-2 text-white">Auto-Backup</h3>
-                <p class="text-gray-400 text-sm font-bold">Nunca perca seu texto. Salvamento automático a cada 3 segundos na sua máquina.</p>
+            <div class="glass-card p-10 rounded-3xl border border-gray-800 hover:border-orange-500 hover-zoom">
+                <div class="text-5xl mb-6 text-orange-500">🚀</div>
+                <h3 class="text-xl font-bold mb-4">Auto-Backup</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Salvamento automático a cada 3 segundos. Segurança total para o seu texto.</p>
             </div>
         </div>
     </section>
 
-    <footer class="py-12 text-center text-gray-500 border-t border-gray-800">
-        <div class="max-w-6xl mx-auto px-6">
-            <p class="font-bold text-gray-300 text-lg mb-2">© 2026 Modo 1 — Todos os direitos reservados.</p>
-            <p class="text-sm text-gray-500 max-w-md mx-auto italic">
-                A solução de alta performance desenvolvida pela Modo 1.
-            </p>
-        </div>
+    <footer class="py-16 text-center text-gray-500 border-t border-gray-800">
+        <p class="font-bold text-gray-400 text-lg mb-2">© 2026 Modo 1 — Todos os direitos reservados.</p>
+        <p class="text-sm italic">Tecnologia Modo 1: Estabilidade e Segurança.</p>
     </footer>
 
     <script>
@@ -127,12 +128,10 @@
             document.getElementById('modalImagem').classList.remove('hidden');
             document.body.style.overflow = 'hidden'; 
         }
-
         function fecharModal() {
             document.getElementById('modalImagem').classList.add('hidden');
             document.body.style.overflow = 'auto'; 
         }
     </script>
-
 </body>
 </html>
