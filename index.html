@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" class="tema-escuro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +8,9 @@
     <link rel="icon" type="image/x-icon" href="icone.ico">
     
     <script>
+        // Pergunta ao Armazenamento Local qual foi a última escolha
         if (localStorage.getItem('modo1_tema') === 'claro') {
-            document.documentElement.classList.add('tema-claro');
+            document.documentElement.classList.replace('tema-escuro', 'tema-claro');
         }
     </script>
 
@@ -17,16 +18,62 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
-        html, body { 
-            background-color: #1a1a1a; 
-            margin: 0; 
-            padding: 0; 
-            height: 100%;
+        /* ========================================= */
+        /* REGRAS DO MODO ESCURO (PADRÃO)            */
+        /* ========================================= */
+        html.tema-escuro {
+            background-color: #1a1a1a;
+            color: white;
         }
 
+        html.tema-escuro .fundo-secao {
+            background-color: #121212;
+        }
+
+        html.tema-escuro .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ========================================= */
+        /* REGRAS DO MODO CLARO                      */
+        /* ========================================= */
+        html.tema-claro {
+            background-color: #f9fafb;
+            color: #111827;
+        }
+
+        html.tema-claro .fundo-secao {
+            background-color: #ffffff;
+        }
+
+        html.tema-claro .glass-card {
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        html.tema-claro .text-gray-300, 
+        html.tema-claro .text-gray-400, 
+        html.tema-claro .text-gray-500 {
+            color: #4b5563 !important;
+        }
+
+        html.tema-claro .texto-mutavel {
+            color: #111827 !important;
+        }
+
+        html.tema-claro footer {
+            border-top-color: #e5e7eb;
+        }
+
+        /* ========================================= */
+        /* ESTILOS GERAIS COMPARTILHADOS             */
+        /* ========================================= */
         body { 
             font-family: 'Inter', sans-serif; 
-            color: white; 
+            margin: 0; 
+            padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .btn-modo1 { 
@@ -50,9 +97,8 @@
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
         
         .zoom-cursor { cursor: zoom-in; }
@@ -62,48 +108,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
-        }
-
-        /* ========================================= */
-        /* REGRAS SEGURAS DO MODO CLARO (LIGHT MODE) */
-        /* ========================================= */
-        html.tema-claro, html.tema-claro body {
-            background-color: #f9fafb !important;
-            color: #111827 !important;
-        }
-        
-        html.tema-claro .secao-meio {
-            background-color: #ffffff !important;
-        }
-
-        html.tema-claro .texto-mutavel {
-            color: #4b5563 !important;
-        }
-
-        html.tema-claro .titulo-mutavel {
-            color: #111827 !important;
-        }
-
-        html.tema-claro .glass-card {
-            background: rgba(0, 0, 0, 0.03) !important;
-            border: 1px solid rgba(0, 0, 0, 0.1) !important;
-        }
-
-        html.tema-claro footer {
-            border-top-color: #e5e7eb !important;
-        }
-
-        /* ========================================= */
-        /* CONTROLE DE TRANSIÇÃO (EVITA PISCAR)      */
-        /* ========================================= */
-        .transicao-ativa, 
-        .transicao-ativa body,
-        .transicao-ativa .secao-meio, 
-        .transicao-ativa .texto-mutavel, 
-        .transicao-ativa .titulo-mutavel, 
-        .transicao-ativa .glass-card, 
-        .transicao-ativa footer {
-            transition: all 0.3s ease;
         }
     </style>
 </head>
@@ -129,7 +133,7 @@
             Teleprompter & Slides
         </h1>
         
-        <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed texto-mutavel">
+        <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
             A solução definitiva para oradores, pastores e criadores de conteúdo. Segurança em nuvem, controle de velocidade e visualização impecável.
         </p>
         
@@ -145,20 +149,20 @@
         </div>
     </header>
 
-    <section class="py-16 bg-[#121212] secao-meio">
+    <section class="py-16 fundo-secao">
         <div class="max-w-5xl mx-auto px-6 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 titulo-bicolor text-center">Conheça a Interface</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div class="glass-card p-4 rounded-3xl shadow-2xl hover-zoom zoom-cursor" onclick="abrirModal('print1.png')">
                     <img src="print1.png" alt="Interface Clara" class="rounded-2xl w-full h-auto border border-gray-800">
-                    <p class="mt-5 text-gray-300 font-bold uppercase tracking-widest text-sm text-center texto-mutavel">Interface Clara</p>
+                    <p class="mt-5 text-gray-300 font-bold uppercase tracking-widest text-sm text-center">Interface Clara</p>
                 </div>
                 <div class="glass-card p-4 rounded-3xl shadow-2xl hover-zoom zoom-cursor" onclick="abrirModal('print2.png')">
                     <img src="print2.png" alt="Modo Escuro" class="rounded-2xl w-full h-auto border border-gray-800">
-                    <p class="mt-5 text-gray-300 font-bold uppercase tracking-widest text-sm text-center texto-mutavel">Modo Escuro</p>
+                    <p class="mt-5 text-gray-300 font-bold uppercase tracking-widest text-sm text-center">Modo Escuro</p>
                 </div>
             </div>
-            <p class="mt-8 text-gray-500 text-sm italic font-bold texto-mutavel">Clique em uma imagem para ampliar</p>
+            <p class="mt-8 text-gray-500 text-sm italic font-bold">Clique em uma imagem para ampliar</p>
         </div>
     </section>
 
@@ -166,29 +170,29 @@
         <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
             <div class="glass-card p-10 rounded-3xl border border-gray-800 hover:border-blue-500 hover-zoom">
                 <div class="text-5xl mb-6 text-blue-500">🔒</div>
-                <h3 class="text-xl font-bold mb-4 text-white titulo-mutavel">Segurança Total</h3>
-                <p class="text-gray-400 text-sm leading-relaxed font-bold texto-mutavel">Licenciamento em nuvem via Supabase. Sua licença protegida por Hardware ID (HWID).</p>
+                <h3 class="text-xl font-bold mb-4 texto-mutavel">Segurança Total</h3>
+                <p class="text-gray-400 text-sm leading-relaxed font-bold">Licenciamento em nuvem via Supabase. Sua licença protegida por Hardware ID (Identificação de Hardware).</p>
             </div>
             <div class="glass-card p-10 rounded-3xl border border-gray-800 hover:border-green-500 hover-zoom">
                 <div class="text-5xl mb-6 text-green-500">🌙</div>
-                <h3 class="text-xl font-bold mb-2 text-white titulo-mutavel">Modo Escuro Nativo</h3>
-                <p class="text-gray-400 text-sm leading-relaxed font-bold texto-mutavel">Conforto visual absoluto para ambientes de igreja e estúdios profissionais.</p>
+                <h3 class="text-xl font-bold mb-2 texto-mutavel">Modo Escuro Nativo</h3>
+                <p class="text-gray-400 text-sm leading-relaxed font-bold">Conforto visual absoluto para ambientes de igreja e estúdios profissionais.</p>
             </div>
             <div class="glass-card p-10 rounded-3xl border border-gray-800 hover:border-orange-500 hover-zoom">
                 <div class="text-5xl mb-6 text-orange-500">🚀</div>
-                <h3 class="text-xl font-bold mb-4 text-white titulo-mutavel">Auto-Backup</h3>
-                <p class="text-gray-400 text-sm leading-relaxed font-bold texto-mutavel">Salvamento automático a cada 3 segundos. Segurança total para o seu texto.</p>
+                <h3 class="text-xl font-bold mb-4 texto-mutavel">Auto-Backup</h3>
+                <p class="text-gray-400 text-sm leading-relaxed font-bold">Salvamento automático a cada 3 segundos. Segurança total para o seu texto.</p>
             </div>
         </div>
     </section>
 
     <footer class="py-16 text-center text-gray-500 border-t border-gray-800">
         <div class="max-w-6xl mx-auto px-6">
-            <p class="font-bold text-gray-300 text-lg mb-2 titulo-mutavel">© 2026 Modo 1 — Todos os direitos reservados.</p>
-            <p class="text-sm text-gray-500 max-w-md mx-auto mb-6 italic texto-mutavel">
+            <p class="font-bold text-gray-300 text-lg mb-2 texto-mutavel">© 2026 Modo 1 — Todos os direitos reservados.</p>
+            <p class="text-sm text-gray-500 max-w-md mx-auto mb-6 italic">
                 A solução de alta performance desenvolvida pela Modo 1.
             </p>
-            <div class="flex justify-center gap-6 text-xs uppercase tracking-widest text-gray-600 font-bold text-center texto-mutavel">
+            <div class="flex justify-center gap-6 text-xs uppercase tracking-widest text-gray-600 font-bold text-center">
                 <span>Tecnologia Modo 1</span>
                 <span>•</span>
                 <span>Alta Performance</span>
@@ -197,6 +201,7 @@
     </footer>
 
     <script>
+        /* Funções de abrir e fechar as imagens */
         function abrirModal(src) {
             document.getElementById('imgExpandida').src = src;
             document.getElementById('modalImagem').classList.remove('hidden');
@@ -208,18 +213,17 @@
             document.body.style.overflow = 'auto'; 
         }
 
+        /* Lógica para alternar o tema e salvar no Armazenamento Local */
         function alternarTema() {
-            // Adiciona a classe de transição apenas no momento do clique
-            document.documentElement.classList.add('transicao-ativa');
-            
-            document.documentElement.classList.toggle('tema-claro');
-            
+            const htmlElement = document.documentElement;
             const icone = document.getElementById('iconeTema');
             
-            if (document.documentElement.classList.contains('tema-claro')) {
+            if (htmlElement.classList.contains('tema-escuro')) {
+                htmlElement.classList.replace('tema-escuro', 'tema-claro');
                 icone.textContent = '🌙';
                 localStorage.setItem('modo1_tema', 'claro');
             } else {
+                htmlElement.classList.replace('tema-claro', 'tema-escuro');
                 icone.textContent = '☀️';
                 localStorage.setItem('modo1_tema', 'escuro');
             }
