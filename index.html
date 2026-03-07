@@ -8,6 +8,7 @@
     <link rel="icon" type="image/x-icon" href="icone.ico">
     
     <style>
+        /* Trava de segurança para garantir o fundo escuro instantaneamente */
         html, body { background-color: #1a1a1a !important; margin: 0; padding: 0; }
     </style>
 
@@ -24,14 +25,14 @@
             transition: transform 0.3s ease, filter 0.3s ease;
         }
 
-
-        /* ADENTO 1: CONTROLE DE BRILHO (AO PASSAR O MOUSE)                   */
-        /* filter: brightness(1.0) -> Mantém a cor original.                  */
-        /* filter: brightness(1.1) -> Aumenta o brilho em 10% (fica mais claro)*/
-        /* filter: brightness(0.9) -> Diminui o brilho em 10% (fica mais escuro)*/
+        /* ----------------------------------------------------------- */
+        /* ADENTO 1: CONTROLE DE BRILHO AO PASSAR O MOUSE              */
+        /* Se quiser brilho, use 1.1 ou 1.2.                           */
+        /* Se quiser que fique estável ou fosco, use 1.0 ou 0.9.       */
+        /* ----------------------------------------------------------- */
         .btn-efeito:hover {
             transform: translateY(-4px);
-            filter: brightness(0.95); /* Ajustado para escurecer levemente ao invés de brilhar */
+            filter: brightness(1.0); 
         }
 
         .hover-zoom { 
@@ -49,8 +50,9 @@
         
         .zoom-cursor { cursor: zoom-in; }
         
+        /* Título com Degradê baseado no seu escudo (#00FF00 e #0000FF) */
         .titulo-bicolor {
-            background: linear-gradient(to bottom, #4ade80 15%, #3b82f6 85%);
+            background: linear-gradient(to bottom, #00FF00 15%, #0000FF 85%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
@@ -76,17 +78,12 @@
         </p>
         
         <div class="flex flex-col md:flex-row justify-center gap-6">
-            
-            /* ADENTO 2: CONTROLE DE CORES DOS BOTÕES                             */
-            /* Mude 'bg-blue-600' para mudar a cor do botão Baixar                */
-            /* Mude 'bg-[#25D366]' para mudar a cor do botão WhatsApp              */
             <a href="https://github.com/Modo1-Br/1-Programa/releases/latest/download/Teleprompter.exe" 
-               class="btn-modo1 btn-efeito bg-blue-700 font-bold py-4 px-10 rounded-full shadow-lg shadow-blue-900/40">
+               class="btn-modo1 btn-efeito bg-blue-600 font-bold py-4 px-10 rounded-full shadow-lg shadow-blue-900/40 text-center">
                📥 Baixar Grátis
             </a>
-            
             <a href="https://wa.me/5562982187017" 
-               class="btn-modo1 btn-efeito bg-[#1da851] font-bold py-4 px-10 rounded-full shadow-lg shadow-green-900/40">
+               class="btn-modo1 btn-efeito bg-[#25D366] font-bold py-4 px-10 rounded-full shadow-lg shadow-green-900/40 text-center">
                💬 Suporte WhatsApp
             </a>
         </div>
@@ -94,18 +91,17 @@
 
     <section class="py-16 bg-[#121212]">
         <div class="max-w-5xl mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 titulo-bicolor text-center">Conheça a Interface</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 titulo-bicolor">Conheça a Interface</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div class="glass-card p-4 rounded-3xl shadow-2xl hover-zoom zoom-cursor" onclick="abrirModal('print1.png')">
-                    <img src="print1.png" alt="Interface Clara" class="rounded-2xl w-full h-auto border border-gray-800">
+                    <img src="print1.png" alt="Interface" class="rounded-2xl w-full h-auto border border-gray-800">
                     <p class="mt-5 text-gray-300 font-bold uppercase tracking-widest text-sm">Interface Clara</p>
                 </div>
                 <div class="glass-card p-4 rounded-3xl shadow-2xl hover-zoom zoom-cursor" onclick="abrirModal('print2.png')">
-                    <img src="print2.png" alt="Modo Escuro" class="rounded-2xl w-full h-auto border border-gray-800">
+                    <img src="print2.png" alt="Interface" class="rounded-2xl w-full h-auto border border-gray-800">
                     <p class="mt-5 text-gray-300 font-bold uppercase tracking-widest text-sm">Modo Escuro</p>
                 </div>
             </div>
-            <p class="mt-8 text-gray-500 text-sm italic font-bold">Clique em uma imagem para ampliar</p>
         </div>
     </section>
 
@@ -118,7 +114,7 @@
             </div>
             <div class="glass-card p-10 rounded-3xl border border-gray-800 hover:border-green-500 hover-zoom">
                 <div class="text-5xl mb-6 text-green-500">🌙</div>
-                <h3 class="text-xl font-bold mb-4 text-white">Modo Escuro Nativo</h3>
+                <h3 class="text-xl font-bold mb-4">Modo Escuro Nativo</h3>
                 <p class="text-gray-400 text-sm leading-relaxed font-bold">Conforto visual absoluto para ambientes de igreja e estúdios profissionais.</p>
             </div>
             <div class="glass-card p-10 rounded-3xl border border-gray-800 hover:border-orange-500 hover-zoom">
@@ -156,4 +152,3 @@
     </script>
 </body>
 </html>
-
