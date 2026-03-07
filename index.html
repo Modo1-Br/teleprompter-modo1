@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Teleprompter & Slides</title>
-    
     <link rel="icon" type="image/x-icon" href="icone.ico">
     
     <style>
-        /* Define o fundo escuro imediatamente ao carregar */
         html, body { background-color: #1a1a1a !important; margin: 0; padding: 0; }
     </style>
 
@@ -26,10 +24,16 @@
             transition: transform 0.3s ease, filter 0.3s ease;
         }
 
-        /* Efeito de subir 4 pixels sem brilho extra (brilho em 1.0) */
+        /* ------------------------------------------------------------------ */
+        /* ADENTO 1: CONTROLE DE BRILHO (AO PASSAR O MOUSE)                   */
+        /* ------------------------------------------------------------------ */
+        /* filter: brightness(1.0) -> Mantém a cor original.                  */
+        /* filter: brightness(1.1) -> Aumenta o brilho em 10% (fica mais claro)*/
+        /* filter: brightness(0.9) -> Diminui o brilho em 10% (fica mais escuro)*/
+        /* ------------------------------------------------------------------ */
         .btn-efeito:hover {
             transform: translateY(-4px);
-            filter: brightness(1.0); 
+            filter: brightness(0.95); /* Ajustado para escurecer levemente ao invés de brilhar */
         }
 
         .hover-zoom { 
@@ -47,7 +51,6 @@
         
         .zoom-cursor { cursor: zoom-in; }
         
-        /* Título com Degradê Verde e Azul */
         .titulo-bicolor {
             background: linear-gradient(to bottom, #4ade80 15%, #3b82f6 85%);
             -webkit-background-clip: text;
@@ -75,12 +78,17 @@
         </p>
         
         <div class="flex flex-col md:flex-row justify-center gap-6">
+            
+            /* ADENTO 2: CONTROLE DE CORES DOS BOTÕES                             */
+            /* Mude 'bg-blue-600' para mudar a cor do botão Baixar                */
+            /* Mude 'bg-[#25D366]' para mudar a cor do botão WhatsApp              */
             <a href="https://github.com/Modo1-Br/1-Programa/releases/latest/download/Teleprompter.exe" 
-               class="btn-modo1 btn-efeito bg-blue-600 font-bold py-4 px-10 rounded-full shadow-lg shadow-blue-900/40">
+               class="btn-modo1 btn-efeito bg-blue-700 font-bold py-4 px-10 rounded-full shadow-lg shadow-blue-900/40">
                📥 Baixar Grátis
             </a>
+            
             <a href="https://wa.me/5562982187017" 
-               class="btn-modo1 btn-efeito bg-[#25D366] font-bold py-4 px-10 rounded-full shadow-lg shadow-green-900/40">
+               class="btn-modo1 btn-efeito bg-[#1da851] font-bold py-4 px-10 rounded-full shadow-lg shadow-green-900/40">
                💬 Suporte WhatsApp
             </a>
         </div>
@@ -92,11 +100,11 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div class="glass-card p-4 rounded-3xl shadow-2xl hover-zoom zoom-cursor" onclick="abrirModal('print1.png')">
                     <img src="print1.png" alt="Interface Clara" class="rounded-2xl w-full h-auto border border-gray-800">
-                    <p class="mt-5 text-gray-300 font-bold uppercase tracking-widest text-sm text-center">Interface Clara</p>
+                    <p class="mt-5 text-gray-300 font-bold uppercase tracking-widest text-sm">Interface Clara</p>
                 </div>
                 <div class="glass-card p-4 rounded-3xl shadow-2xl hover-zoom zoom-cursor" onclick="abrirModal('print2.png')">
                     <img src="print2.png" alt="Modo Escuro" class="rounded-2xl w-full h-auto border border-gray-800">
-                    <p class="mt-5 text-gray-300 font-bold uppercase tracking-widest text-sm text-center">Modo Escuro</p>
+                    <p class="mt-5 text-gray-300 font-bold uppercase tracking-widest text-sm">Modo Escuro</p>
                 </div>
             </div>
             <p class="mt-8 text-gray-500 text-sm italic font-bold">Clique em uma imagem para ampliar</p>
@@ -105,25 +113,21 @@
 
     <section class="py-24">
         <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
-            
             <div class="glass-card p-10 rounded-3xl border border-gray-800 hover:border-blue-500 hover-zoom">
                 <div class="text-5xl mb-6 text-blue-500">🔒</div>
                 <h3 class="text-xl font-bold mb-4">Segurança Total</h3>
                 <p class="text-gray-400 text-sm leading-relaxed font-bold">Licenciamento em nuvem via Supabase. Sua licença protegida por Hardware ID (HWID).</p>
             </div>
-
             <div class="glass-card p-10 rounded-3xl border border-gray-800 hover:border-green-500 hover-zoom">
                 <div class="text-5xl mb-6 text-green-500">🌙</div>
-                <h3 class="text-xl font-bold mb-2 text-white">Modo Escuro Nativo</h3>
+                <h3 class="text-xl font-bold mb-4 text-white">Modo Escuro Nativo</h3>
                 <p class="text-gray-400 text-sm leading-relaxed font-bold">Conforto visual absoluto para ambientes de igreja e estúdios profissionais.</p>
             </div>
-
             <div class="glass-card p-10 rounded-3xl border border-gray-800 hover:border-orange-500 hover-zoom">
                 <div class="text-5xl mb-6 text-orange-500">🚀</div>
-                <h3 class="text-xl font-bold mb-2 text-white">Auto-Backup</h3>
+                <h3 class="text-xl font-bold mb-4">Auto-Backup</h3>
                 <p class="text-gray-400 text-sm leading-relaxed font-bold">Salvamento automático a cada 3 segundos. Segurança total para o seu texto.</p>
             </div>
-
         </div>
     </section>
 
@@ -133,7 +137,7 @@
             <p class="text-sm text-gray-500 max-w-md mx-auto mb-6">
                 Desenvolvido para oferecer máxima performance, segurança e estabilidade em apresentações profissionais.
             </p>
-            <div class="flex justify-center gap-6 text-xs uppercase tracking-widest text-gray-600 font-bold text-center">
+            <div class="flex justify-center gap-6 text-xs uppercase tracking-widest text-gray-600 font-bold">
                 <span>Tecnologia Modo 1</span>
                 <span>•</span>
                 <span>Alta Performance</span>
@@ -147,12 +151,10 @@
             document.getElementById('modalImagem').classList.remove('hidden');
             document.body.style.overflow = 'hidden'; 
         }
-
         function fecharModal() {
             document.getElementById('modalImagem').classList.add('hidden');
             document.body.style.overflow = 'auto'; 
         }
     </script>
-
 </body>
 </html>
