@@ -7,21 +7,31 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #1a1a1a; }
+        body { font-family: 'Inter', sans-serif; background-color: #1a1a1a; margin: 0; }
         
-        /* Força a cor branca nos botões */
-        .btn-modo1 { color: #ffffff !important; text-decoration: none; }
+        /* Força a cor branca e remove sublinhados dos botões */
+        .btn-modo1 { 
+            color: #ffffff !important; 
+            text-decoration: none !important; 
+            display: inline-block;
+            transition: all 0.3s ease-in-out;
+        }
         
+        /* Efeito de aumento sutil de 2% */
+        .hover-zoom:hover {
+            transform: scale(1.02);
+        }
+
         .glass-card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            transition: all 0.3s ease-in-out;
         }
         
         .zoom-cursor { cursor: zoom-in; }
         
-        /* Título Verde em cima e Azul embaixo */
+        /* Título com Degradê Verde e Azul */
         .titulo-bicolor {
             background: linear-gradient(to bottom, #4ade80 0%, #2563eb 100%);
             -webkit-background-clip: text;
@@ -49,11 +59,11 @@
         
         <div class="flex flex-col md:flex-row justify-center gap-4">
             <a href="https://github.com/Modo1-Br/1-Programa/releases/latest/download/Teleprompter.exe" 
-               class="btn-modo1 bg-blue-600 font-bold py-4 px-8 rounded-full shadow-lg shadow-blue-500/30 transform transition hover:scale-102">
+               class="btn-modo1 bg-blue-600 font-bold py-4 px-8 rounded-full shadow-md hover-zoom">
                📥 Baixar Grátis
             </a>
             <a href="https://wa.me/5562982187017" 
-               class="btn-modo1 bg-[#25D366] font-bold py-4 px-8 rounded-full shadow-lg shadow-green-500/20 transform transition hover:scale-102">
+               class="btn-modo1 bg-[#25D366] font-bold py-4 px-8 rounded-full shadow-md hover-zoom">
                💬 Suporte WhatsApp
             </a>
         </div>
@@ -61,13 +71,13 @@
 
     <section class="py-10 bg-[#121212]">
         <div class="max-w-5xl mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-10 titulo-bicolor">Conheça a Interface</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-10 titulo-bicolor text-center">Conheça a Interface</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                <div class="glass-card p-3 rounded-2xl shadow-xl transform hover:scale-102 zoom-cursor" onclick="abrirModal('print1.png')">
+                <div class="glass-card p-3 rounded-2xl shadow-xl hover-zoom zoom-cursor" onclick="abrirModal('print1.png')">
                     <img src="print1.png" alt="Interface Clara" class="rounded-xl w-full h-auto border border-gray-800">
                     <p class="mt-4 text-sm text-gray-400 font-bold uppercase tracking-widest">Interface Clara</p>
                 </div>
-                <div class="glass-card p-3 rounded-2xl shadow-xl transform hover:scale-102 zoom-cursor" onclick="abrirModal('print2.png')">
+                <div class="glass-card p-3 rounded-2xl shadow-xl hover-zoom zoom-cursor" onclick="abrirModal('print2.png')">
                     <img src="print2.png" alt="Modo Escuro" class="rounded-xl w-full h-auto border border-gray-800">
                     <p class="mt-4 text-sm text-gray-400 font-bold uppercase tracking-widest">Modo Escuro</p>
                 </div>
@@ -79,22 +89,22 @@
     <section class="bg-[#1a1a1a] py-20">
         <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
             
-            <div class="glass-card p-8 rounded-2xl border border-gray-800 hover:border-blue-500 transform hover:scale-102">
+            <div class="glass-card p-8 rounded-2xl border border-gray-800 hover:border-blue-500 hover-zoom">
                 <div class="text-4xl mb-4 text-blue-500">🔒</div>
                 <h3 class="text-xl font-bold mb-2 text-white">Segurança Total</h3>
-                <p class="text-gray-400 text-sm font-bold">Licenciamento em nuvem via Supabase. Sua licença vinculada à Identificação de Hardware (HWID).</p>
+                <p class="text-gray-400 text-sm font-bold">Licenciamento em nuvem via Supabase. Sua licença vinculada ao Hardware ID.</p>
             </div>
 
-            <div class="glass-card p-8 rounded-2xl border border-gray-800 hover:border-green-500 transform hover:scale-102">
+            <div class="glass-card p-8 rounded-2xl border border-gray-800 hover:border-green-500 hover-zoom">
                 <div class="text-4xl mb-4 text-green-500">🌙</div>
                 <h3 class="text-xl font-bold mb-2 text-white">Modo Escuro Nativo</h3>
-                <p class="text-gray-400 text-sm font-bold">Ideal para apresentações em igrejas e estúdios de gravação profissional.</p>
+                <p class="text-gray-400 text-sm font-bold">Ideal para apresentações em igrejas e estúdios profissionais.</p>
             </div>
 
-            <div class="glass-card p-8 rounded-2xl border border-gray-800 hover:border-orange-500 transform hover:scale-102">
+            <div class="glass-card p-8 rounded-2xl border border-gray-800 hover:border-orange-500 hover-zoom">
                 <div class="text-4xl mb-4 text-orange-500">🚀</div>
                 <h3 class="text-xl font-bold mb-2 text-white">Auto-Backup</h3>
-                <p class="text-gray-400 text-sm font-bold">Salvamento local automático a cada 3 segundos. Nunca perca suas edições.</p>
+                <p class="text-gray-400 text-sm font-bold">Salvamento automático a cada 3 segundos. Nunca perca suas edições.</p>
             </div>
 
         </div>
