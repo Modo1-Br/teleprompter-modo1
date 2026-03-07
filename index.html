@@ -1,155 +1,166 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Teleprompter & Slides</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Teleprompter & Slides</title>
+    <link rel="icon" type="image/x-icon" href="icone.ico">
+    
+    <style>
+        /* Fundo escuro absoluto e imediato */
+        html, body { 
+            background-color: #1a1a1a !important; 
+            margin: 0; 
+            padding: 0; 
+            height: 100%;
+        }
+    </style>
 
-<style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            color: white; 
+        }
 
-body{
-    margin:0;
-    font-family: Arial, Helvetica, sans-serif;
-    background:#0b0f14;
-    color:white;
-    text-align:center;
-}
+        .fundo-secao {
+            background-color: #121212;
+        }
 
-.container{
-    max-width:1100px;
-    margin:auto;
-    padding:40px 20px;
-}
+        .btn-modo1 { 
+            color: #ffffff !important; 
+            text-decoration: none !important; 
+            display: inline-block;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
 
-.logo{
-    width:80px;
-    margin-bottom:20px;
-}
+        /* Botão sobe levemente e escurece (sem estourar brilho) */
+        .btn-efeito:hover {
+            transform: translateY(-4px);
+            filter: brightness(0.85); 
+        }
 
-h1{
-    font-size:48px;
-    margin-bottom:10px;
-}
+        .hover-zoom { 
+            transition: transform 0.3s ease, border-color 0.3s ease; 
+        }
+        
+        .hover-zoom:hover { 
+            transform: scale(1.02); 
+        }
 
-.highlight{
-    color:#00e5ff;
-}
-
-p{
-    color:#cfcfcf;
-    font-size:18px;
-    max-width:600px;
-    margin:auto;
-}
-
-.buttons{
-    margin-top:30px;
-}
-
-.btn{
-    padding:14px 28px;
-    border-radius:30px;
-    text-decoration:none;
-    font-weight:bold;
-    margin:10px;
-    display:inline-block;
-}
-
-.btn-download{
-    background:#2563eb;
-    color:white;
-}
-
-.btn-whatsapp{
-    background:#22c55e;
-    color:white;
-}
-
-.section{
-    margin-top:80px;
-}
-
-.section h2{
-    color:#00e5ff;
-}
-
-.images{
-    display:flex;
-    justify-content:center;
-    gap:40px;
-    margin-top:30px;
-    flex-wrap:wrap;
-}
-
-.card{
-    background:#111827;
-    padding:20px;
-    border-radius:10px;
-}
-
-.card img{
-    width:400px;
-    border-radius:6px;
-}
-
-.caption{
-    margin-top:10px;
-    color:#9ca3af;
-    font-size:14px;
-}
-
-</style>
-
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .zoom-cursor { cursor: zoom-in; }
+        
+        /* Degradê com as cores exatas do seu escudo */
+        .titulo-bicolor {
+            background: linear-gradient(to bottom, #30A465 15%, #11578F 85%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
 
-<div class="container">
+    <div id="modalImagem" class="fixed inset-0 z-50 hidden bg-black/95 flex items-center justify-center p-4" onclick="fecharModal()">
+        <span class="absolute top-5 right-8 text-white text-5xl cursor-pointer font-bold">&times;</span>
+        <img id="imgExpandida" src="" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl border border-gray-700">
+    </div>
 
-<img src="logo.png" class="logo">
+    <header class="max-w-6xl mx-auto px-6 py-12 text-center">
+        <img src="logo.png" alt="Logo Modo 1" class="mx-auto w-24 mb-0 drop-shadow-lg">
+        
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 mt-8 titulo-bicolor leading-tight">
+            Teleprompter & Slides
+        </h1>
+        
+        <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+            A solução definitiva para oradores, pastores e criadores de conteúdo. Segurança em nuvem, controle de velocidade e visualização impecável.
+        </p>
+        
+        <div class="flex flex-col md:flex-row justify-center gap-6">
+            <a href="https://github.com/Modo1-Br/1-Programa/releases/latest/download/Teleprompter.exe" 
+               class="btn-modo1 btn-efeito bg-blue-800 font-bold py-4 px-10 rounded-full shadow-lg shadow-blue-900/40 text-center">
+               📥 Baixar Grátis
+            </a>
+            <a href="https://wa.me/5562982187017" 
+               class="btn-modo1 btn-efeito bg-[#1da851] font-bold py-4 px-10 rounded-full shadow-lg shadow-green-900/40 text-center">
+               💬 Suporte WhatsApp
+            </a>
+        </div>
+    </header>
 
-<h1>
-<span class="highlight">Teleprompter</span> & Slides
-</h1>
+    <section class="py-16 fundo-secao">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 titulo-bicolor text-center">Conheça a Interface</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="glass-card p-4 rounded-3xl shadow-2xl hover-zoom zoom-cursor" onclick="abrirModal('print1.png')">
+                    <img src="print1.png" alt="Interface Clara" class="rounded-2xl w-full h-auto border border-gray-800">
+                    <p class="mt-5 text-gray-300 font-bold uppercase tracking-widest text-sm text-center">Interface Clara</p>
+                </div>
+                <div class="glass-card p-4 rounded-3xl shadow-2xl hover-zoom zoom-cursor" onclick="abrirModal('print2.png')">
+                    <img src="print2.png" alt="Modo Escuro" class="rounded-2xl w-full h-auto border border-gray-800">
+                    <p class="mt-5 text-gray-300 font-bold uppercase tracking-widest text-sm text-center">Modo Escuro</p>
+                </div>
+            </div>
+            <p class="mt-8 text-gray-500 text-sm italic font-bold">Clique em uma imagem para ampliar</p>
+        </div>
+    </section>
 
-<p>
-A solução definitiva para oradores, pastores e criadores de conteúdo.
-Segurança em nuvem, controle de velocidade e visualização impecável.
-</p>
+    <section class="py-24">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+            <div class="glass-card p-10 rounded-3xl border border-gray-800 hover:border-blue-500 hover-zoom">
+                <div class="text-5xl mb-6 text-blue-500">🔒</div>
+                <h3 class="text-xl font-bold mb-4 text-white">Segurança Total</h3>
+                <p class="text-gray-400 text-sm leading-relaxed font-bold">Licenciamento em nuvem via Supabase. Sua licença protegida por Hardware ID (Identificação de Hardware).</p>
+            </div>
+            <div class="glass-card p-10 rounded-3xl border border-gray-800 hover:border-green-500 hover-zoom">
+                <div class="text-5xl mb-6 text-green-500">🌙</div>
+                <h3 class="text-xl font-bold mb-2 text-white">Modo Escuro Nativo</h3>
+                <p class="text-gray-400 text-sm leading-relaxed font-bold">Conforto visual absoluto para ambientes de igreja e estúdios profissionais.</p>
+            </div>
+            <div class="glass-card p-10 rounded-3xl border border-gray-800 hover:border-orange-500 hover-zoom">
+                <div class="text-5xl mb-6 text-orange-500">🚀</div>
+                <h3 class="text-xl font-bold mb-4 text-white">Auto-Backup</h3>
+                <p class="text-gray-400 text-sm leading-relaxed font-bold">Salvamento automático a cada 3 segundos. Segurança total para o seu texto.</p>
+            </div>
+        </div>
+    </section>
 
-<div class="buttons">
+    <footer class="py-16 text-center text-gray-500 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-6">
+            <p class="font-bold text-gray-300 text-lg mb-2">© 2026 Modo 1 — Todos os direitos reservados.</p>
+            <p class="text-sm text-gray-500 max-w-md mx-auto mb-6 italic">
+                A solução de alta performance desenvolvida pela Modo 1.
+            </p>
+            <div class="flex justify-center gap-6 text-xs uppercase tracking-widest text-gray-600 font-bold text-center">
+                <span>Tecnologia Modo 1</span>
+                <span>•</span>
+                <span>Alta Performance</span>
+            </div>
+        </div>
+    </footer>
 
-<a href="#" class="btn btn-download">
-⬇ Baixar Grátis
-</a>
+    <script>
+        function abrirModal(src) {
+            document.getElementById('imgExpandida').src = src;
+            document.getElementById('modalImagem').classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; 
+        }
 
-<a href="#" class="btn btn-whatsapp">
-Suporte WhatsApp
-</a>
-
-</div>
-
-
-<div class="section">
-
-<h2>Conheça a Interface</h2>
-
-<div class="images">
-
-<div class="card">
-<img src="interface-clara.png">
-<div class="caption">INTERFACE CLARA</div>
-</div>
-
-<div class="card">
-<img src="interface-escura.png">
-<div class="caption">MODO ESCURO</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
+        function fecharModal() {
+            document.getElementById('modalImagem').classList.add('hidden');
+            document.body.style.overflow = 'auto'; 
+        }
+    </script>
 
 </body>
 </html>
