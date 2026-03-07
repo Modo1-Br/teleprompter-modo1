@@ -3,54 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Teleprompter & Slides</title>
     <link rel="icon" type="image/x-icon" href="icone.ico">
-    
     <style>
-        /* Trava de segurança para garantir o fundo escuro instantaneamente */
         html, body { background-color: #1a1a1a !important; margin: 0; padding: 0; }
     </style>
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    
     <style>
         body { font-family: 'Inter', sans-serif; color: white; }
-        
         .btn-modo1 { 
             color: #ffffff !important; 
             text-decoration: none !important; 
             display: inline-block;
             transition: transform 0.3s ease, filter 0.3s ease;
         }
-
-        /* ----------------------------------------------------------- */
-        /* ADENTO 1: CONTROLE DE BRILHO AO PASSAR O MOUSE              */
-        /* Se quiser brilho, use 1.1 ou 1.2.                           */
-        /* Se quiser que fique estável ou fosco, use 1.0 ou 0.9.       */
-        /* ----------------------------------------------------------- */
         .btn-efeito:hover {
             transform: translateY(-4px);
-            filter: brightness(1.0); 
+            filter: brightness(0.9); 
         }
-
-        .hover-zoom { 
-            transition: transform 0.3s ease, border-color 0.3s ease; 
-        }
-        .hover-zoom:hover { 
-            transform: scale(1.02); 
-        }
-
+        .hover-zoom { transition: transform 0.3s ease, border-color 0.3s ease; }
+        .hover-zoom:hover { transform: scale(1.02); }
         .glass-card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
         .zoom-cursor { cursor: zoom-in; }
-        
-        /* Título com Degradê baseado no seu escudo (#00FF00 e #0000FF) */
         .titulo-bicolor {
             background: linear-gradient(to bottom, #00FF00 15%, #0000FF 85%);
             -webkit-background-clip: text;
@@ -60,35 +39,19 @@
     </style>
 </head>
 <body>
-
     <div id="modalImagem" class="fixed inset-0 z-50 hidden bg-black/95 flex items-center justify-center p-4" onclick="fecharModal()">
         <span class="absolute top-5 right-8 text-white text-5xl cursor-pointer font-bold">&times;</span>
         <img id="imgExpandida" src="" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl border border-gray-700">
     </div>
-
     <header class="max-w-6xl mx-auto px-6 py-16 text-center">
-        <img src="logo.png" alt="Logo Modo 1" class="mx-auto w-24 mb-6 drop-shadow-lg">
-        
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 titulo-bicolor leading-tight">
-            Teleprompter & Slides
-        </h1>
-        
-        <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-            A solução definitiva para oradores, pastores e criadores de conteúdo. Segurança em nuvem, controle de velocidade e visualização impecável.
-        </p>
-        
+        <img src="logo.png" alt="Logo" class="mx-auto w-24 mb-6 drop-shadow-lg">
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 titulo-bicolor leading-tight">Teleprompter & Slides</h1>
+        <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">A solução definitiva para oradores, pastores e criadores de conteúdo. Segurança em nuvem, controle de velocidade e visualização impecável.</p>
         <div class="flex flex-col md:flex-row justify-center gap-6">
-            <a href="https://github.com/Modo1-Br/1-Programa/releases/latest/download/Teleprompter.exe" 
-               class="btn-modo1 btn-efeito bg-blue-600 font-bold py-4 px-10 rounded-full shadow-lg shadow-blue-900/40 text-center">
-               📥 Baixar Grátis
-            </a>
-            <a href="https://wa.me/5562982187017" 
-               class="btn-modo1 btn-efeito bg-[#25D366] font-bold py-4 px-10 rounded-full shadow-lg shadow-green-900/40 text-center">
-               💬 Suporte WhatsApp
-            </a>
+            <a href="https://github.com/Modo1-Br/1-Programa/releases/latest/download/Teleprompter.exe" class="btn-modo1 btn-efeito bg-blue-600 font-bold py-4 px-10 rounded-full shadow-lg shadow-blue-900/40 text-center">📥 Baixar Grátis</a>
+            <a href="https://wa.me/5562982187017" class="btn-modo1 btn-efeito bg-[#25D366] font-bold py-4 px-10 rounded-full shadow-lg shadow-green-900/40 text-center">💬 Suporte WhatsApp</a>
         </div>
     </header>
-
     <section class="py-16 bg-[#121212]">
         <div class="max-w-5xl mx-auto px-6 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 titulo-bicolor">Conheça a Interface</h2>
@@ -104,7 +67,6 @@
             </div>
         </div>
     </section>
-
     <section class="py-24">
         <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
             <div class="glass-card p-10 rounded-3xl border border-gray-800 hover:border-blue-500 hover-zoom">
@@ -124,21 +86,12 @@
             </div>
         </div>
     </section>
-
     <footer class="py-16 text-center text-gray-500 border-t border-gray-800">
         <div class="max-w-6xl mx-auto px-6">
             <p class="font-bold text-gray-300 text-lg mb-2">© 2026 Modo 1 — Todos os direitos reservados.</p>
-            <p class="text-sm text-gray-500 max-w-md mx-auto mb-6">
-                Desenvolvido para oferecer máxima performance, segurança e estabilidade em apresentações profissionais.
-            </p>
-            <div class="flex justify-center gap-6 text-xs uppercase tracking-widest text-gray-600 font-bold">
-                <span>Tecnologia Modo 1</span>
-                <span>•</span>
-                <span>Alta Performance</span>
-            </div>
+            <p class="text-sm text-gray-500 max-w-md mx-auto mb-6 italic">A solução de alta performance desenvolvida pela Modo 1.</p>
         </div>
     </footer>
-
     <script>
         function abrirModal(src) {
             document.getElementById('imgExpandida').src = src;
