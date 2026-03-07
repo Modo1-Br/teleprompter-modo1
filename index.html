@@ -13,17 +13,24 @@
             backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
+        .zoom-cursor { cursor: zoom-in; }
     </style>
 </head>
 <body class="text-white">
 
+    <div id="modalImagem" class="fixed inset-0 z-50 hidden bg-black/95 flex items-center justify-center p-4" onclick="fecharModal()">
+        <span class="absolute top-5 right-8 text-white text-5xl cursor-pointer font-bold">&times;</span>
+        <img id="imgExpandida" src="" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl border border-gray-700">
+    </div>
+
     <header class="max-w-6xl mx-auto px-6 py-12 text-center">
-        <img src="logo.png" alt="Logo Modo 1" class="mx-auto w-24 mb-4">
+        <img src="logo.png" alt="Logo Modo 1" class="mx-auto w-24 mb-6 drop-shadow-lg">
         
-        <h1 class="text-5xl md:text-6xl font-extrabold mb-4 bg-gradient-to-r from-blue-500 to-green-400 bg-clip-text text-transparent">
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-4 text-[#3b82f6]">
             Teleprompter & Slides Modo 1
         </h1>
-        <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+        
+        <p class="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
             A solução definitiva para oradores, pastores e criadores de conteúdo. Segurança em nuvem, controle de velocidade e visualização impecável.
         </p>
         
@@ -40,45 +47,39 @@
     </header>
 
     <section class="py-10 bg-[#121212]">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-8 text-blue-400">Conheça a Interface</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center">
-                <div class="glass-card p-4 rounded-2xl shadow-xl hover:scale-105 transition duration-300">
-                    <img src="print1.png" alt="Modo Claro" class="rounded-xl w-full h-auto">
-                    <p class="mt-4 text-gray-400">Interface Clara e Intuitiva</p>
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="text-2xl md:text-3xl font-bold mb-10 text-blue-400">Conheça a Interface</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                <div class="glass-card p-3 rounded-2xl shadow-xl hover:scale-[1.02] transition duration-300 zoom-cursor" onclick="abrirModal('print1.png')">
+                    <img src="print1.png" alt="Interface Clara" class="rounded-xl w-full h-auto border border-gray-800">
+                    <p class="mt-4 text-sm text-gray-400 font-bold uppercase tracking-widest">Interface Clara e Intuitiva</p>
                 </div>
-                <div class="glass-card p-4 rounded-2xl shadow-xl hover:scale-105 transition duration-300">
-                    <img src="print2.png" alt="Modo Escuro" class="rounded-xl w-full h-auto">
-                    <p class="mt-4 text-gray-400">Modo Escuro para Ambientes com Pouca Luz</p>
+                <div class="glass-card p-3 rounded-2xl shadow-xl hover:scale-[1.02] transition duration-300 zoom-cursor" onclick="abrirModal('print2.png')">
+                    <img src="print2.png" alt="Modo Escuro" class="rounded-xl w-full h-auto border border-gray-800">
+                    <p class="mt-4 text-sm text-gray-400 font-bold uppercase tracking-widest">Modo Escuro Profissional</p>
                 </div>
             </div>
+            <p class="mt-8 text-gray-500 text-sm">Clique em qualquer imagem para ver em tamanho real</p>
         </div>
     </section>
 
-    <section class="bg-[#1a1a1a] py-16">
-        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="glass-card p-8 rounded-2xl border border-gray-800 hover:border-blue-500 transition">
-                <div class="text-4xl mb-4 text-blue-500">🔒</div>
-                <h3 class="text-xl font-bold mb-2">Segurança Total</h3>
-                <p class="text-gray-400">Licenciamento em nuvem com Supabase. Sua licença protegida por Hardware ID.</p>
-            </div>
-            <div class="glass-card p-8 rounded-2xl border border-gray-800 hover:border-green-500 transition">
-                <div class="text-4xl mb-4 text-green-500">🌙</div>
-                <h3 class="text-xl font-bold mb-2">Modo Escuro Nativo</h3>
-                <p class="text-gray-400">Conforto visual para ambientes escuros, igrejas e estúdios de gravação.</p>
-            </div>
-            <div class="glass-card p-8 rounded-2xl border border-gray-800 hover:border-orange-500 transition">
-                <div class="text-4xl mb-4 text-orange-500">🚀</div>
-                <h3 class="text-xl font-bold mb-2">Auto-Backup</h3>
-                <p class="text-gray-400">Nunca perca seu texto. Salvamento automático a cada 3 segundos na sua máquina.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-10 text-center text-gray-500 border-t border-gray-800">
-        <p>© 2026 Modo 1 - Todos os direitos reservados.</p>
-        <p class="text-sm mt-2">Desenvolvido com tecnologia de ponta para alta performance.</p>
+    <footer class="py-12 text-center text-gray-500 border-t border-gray-800">
+        <p class="font-bold text-gray-400">© 2026 Modo 1 - Todos os direitos reservados.</p>
+        <p class="text-xs mt-2 opacity-50 italic">Desenvolvido para alta performance e estabilidade.</p>
     </footer>
+
+    <script>
+        function abrirModal(src) {
+            document.getElementById('imgExpandida').src = src;
+            document.getElementById('modalImagem').classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Trava a rolagem do site quando aberto
+        }
+
+        function fecharModal() {
+            document.getElementById('modalImagem').classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Libera a rolagem
+        }
+    </script>
 
 </body>
 </html>
