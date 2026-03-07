@@ -37,7 +37,7 @@
             transition: transform 0.3s ease, filter 0.3s ease;
         }
 
-        /* Botão sobe levemente e escurece (sem estourar brilho) */
+        /* Botão sobe levemente e escurece */
         .btn-efeito:hover {
             transform: translateY(-4px);
             filter: brightness(0.85); 
@@ -59,14 +59,18 @@
         
         .zoom-cursor { cursor: zoom-in; }
         
-        /* Degradê com as cores exatas do seu escudo e Brilho Suave adicionado */
+        /* ============================================================ */
+        /* CONFIGURAÇÃO DE COR DA MARCA MODO 1 (Sem Brilho, Cores Fortes) */
+        /* ============================================================ */
         .titulo-bicolor {
-            background: linear-gradient(to bottom, #30A465 15%, #11578F 85%);
+            /* Degradê ajustado: Verde Esmeralda Forte para Azul Royal Profundo */
+            background: linear-gradient(to bottom, #10b981 20%, #1d4ed8 80%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
-            /* Aura de brilho combinando o verde e o azul */
-            filter: drop-shadow(0px 0px 12px rgba(48, 164, 101, 0.5)) drop-shadow(0px 0px 12px rgba(17, 87, 143, 0.5));
+            
+            /* Brilho removido completamente */
+            filter: none !important;
         }
     </style>
 </head>
